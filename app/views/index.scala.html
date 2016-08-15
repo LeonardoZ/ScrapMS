@@ -1,0 +1,36 @@
+@(releases: Seq[models.entity.ReleaseInfo])
+
+@main("Index") {
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="page-header">
+            <img src="@routes.Assets.at("/images/logo-big.png")"
+            <p class="help-block">Save, read and get notified about your prefered Mangas releses on MangaStream.</p>.
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <h2><strong>Subscriptions Feed</strong></h2>
+        <table class="table">
+            <tbody>
+            @{releases map { n =>
+            <tr class="row-manga-list">
+                <td class="col-title"><strong>{n.mangaName + " " + n.chapterNum}</strong></td>
+                <td><strong>{ n.printableRelease }</strong></td>
+                <td class="col-actions">
+                    <div class="pull-right">
+                        <a class="btn btn-actions" target="_blank" href={n.link}>
+                            <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Last Chapter
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            }}
+            </tbody>
+        </table>
+    </div>
+</div>
+}

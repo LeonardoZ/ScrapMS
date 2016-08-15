@@ -1,0 +1,32 @@
+@main("Manga - Chapters") {
+
+<div class="row">
+    <div class="col-xs-12">
+        <h2><strong>Naruto</strong></h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Title</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            @{ 1 to 700 map { n=>
+            <tr class="row-manga-list">
+                <td class="col-title"><strong>{n}</strong></td>
+                <td class="col-numbers"><strong>The shitiest chapter ever {n}</strong></td>
+                <td class="col-actions">
+                    <div class="pull-left">
+                        <button datasrc="/chapters" class="btn btn-actions">
+                            <i class="fa fa-eye" aria-hidden="true"></i> Read
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            }}
+            </tbody>
+        </table>
+    </div>
+</div>
+}

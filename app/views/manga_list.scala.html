@@ -1,0 +1,49 @@
+@(mangas: Seq[(models.entity.Manga, Option[models.entity.Subscription])])
+
+@main("Mangas") {
+
+<div class="row">
+    <div class="col-xs-12">
+        <h2><strong>Mangas List</strong></h2>
+        <table class="table table-manga">
+            <thead>
+                <tr>
+                    <th>Manga</th>
+                    <th>See</th>
+                </tr>
+            </thead>
+            <tbody>
+            @mangas.map { m =>
+            <tr class="row-manga-list">
+                <td class="col-title"><strong>@m._1.title</strong></td>
+
+                </td>
+                <td class="col-actions">
+                    <div>
+                        @m._2 match {
+                            case Some(sub) => {
+                                <button data-manga-id="@m._1.id.get" class="btn btn-actions" disabled="disabled">
+                                    Subscribed
+                                </button>
+                            }
+                            case None => {
+                                <button data-manga-id="@m._1.id.get" class="btn btn-actions sub">
+                                    <i class="fa fa-share" aria-hidden="true"></i>
+                                    Subscribe
+                                </button>
+                            }
+                        }
+
+
+                        <a href="@m._1.link" class="btn btn-actions">
+                            <i class="fa fa-server" aria-hidden="true"></i> List chapters
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+}
